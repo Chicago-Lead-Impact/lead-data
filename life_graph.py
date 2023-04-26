@@ -28,13 +28,14 @@ def set_marker_size(x, factor):
 # for variable in variables_to_compare:
 #     data.plot.scatter(x='avg_lead_poisoning', y=variable, s=set_marker_size(data['exp_value'], 0.5), edgecolors='black')
 
-scatter = ax.scatter(x=data['avg_lead_poisoning'], y=data['HDX_2017-2021'], s=set_marker_size(data['exp_value'], 0.5), edgecolors='black', color= '#2ea29a')
+scatter = ax.scatter(x=data['avg_lead_poisoning'], y=data['VRLE_2020'], s=set_marker_size(data['exp_value'], 0.5), edgecolors='black', color= '#2ea29a')
 
 labels =['{0}'.format(x) for x in communities]
 tooltip = mpld3.plugins.PointLabelTooltip(scatter, labels=labels)
-ax.set_ylabel('Hardship Index')
+#ax.set_facecolor(2ea29a)
+ax.set_ylabel('Life Expectancy')
 ax.set_xlabel('Average Lead Poisoning %')
-ax.set_title('Average Lead Poisoning % Rate Compared to Hardship Index & Income per Community')
+ax.set_title('Average Lead Poisoning % Rate Compared to Life Expectancy & Income per Community')
 
 mpld3.plugins.connect(fig, tooltip)
 
