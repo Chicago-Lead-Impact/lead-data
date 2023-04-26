@@ -30,14 +30,18 @@ def set_marker_size(x, factor):
 
 scatter = ax.scatter(x=data['avg_lead_poisoning'], y=data['HDX_2017-2021'], s=set_marker_size(data['exp_value'], 0.5), edgecolors='black')
 
-labels =['community {0}'.format(x) for x in communites]
+labels =['{0}'.format(x) for x in communites]
 tooltip = mpld3.plugins.PointLabelTooltip(scatter, labels=labels)
+ax.set_ylabel('Hardship Index')
+ax.set_xlabel('Average Lead Poisoning %')
+ax.set_title('Average Lead Poisoning % Rate Compared to Hardship Index & Income per Community')
+
 mpld3.plugins.connect(fig, tooltip)
 
 print(data['avg_lead_poisoning'])
 
 # Save the HTML to test.html
-mpld3.save_html(fig, 'resource_impact.html')
+mpld3.save_html(fig, 'hardship_graph.html')
 
 # Open up the browser and show a preview.
 # mpld3.show()
