@@ -6,7 +6,7 @@ import mplcursors
 from mpld3 import plugins
 
 data = pd.read_excel('Chicago_Health_Atlas_Data_Download_Community_areas_3.xlsx', engine='openpyxl')
-
+communites = data["Name"].tolist()
 # Set the index to 'Name' column (assuming it represents the community name)
 data.set_index("Name", inplace=True)
 
@@ -30,7 +30,7 @@ def set_marker_size(x, factor):
 
 scatter = ax.scatter(x=data['avg_lead_poisoning'], y=data['HDX_2017-2021'], s=set_marker_size(data['exp_value'], 0.5), edgecolors='black')
 
-labels =['community {0}'.format(x) for x in range(200)]
+labels =['community {0}'.format(x) for x in communites]
 tooltip = mpld3.plugins.PointLabelTooltip(scatter, labels=labels)
 mpld3.plugins.connect(fig, tooltip)
 
